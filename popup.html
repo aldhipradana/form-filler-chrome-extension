@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="popup.css">
+</head>
+
+<body>
+  <form id="myForm">
+    <!-- <input type="text" id="inputField" placeholder="Enter a value"> -->
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="attendance">Can you attend?</label>
+    <select id="attendance" name="attendance">
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+    <!-- 
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date"> -->
+
+    </div>
+
+    <div id="survey" class="multiple-choice-container">
+      <label>How did you hear about this event?</label>
+      <div>
+
+        <input type="checkbox" name="survey" value="Website" id="Website">
+        <label for="Website">Website</label>
+      </div>
+
+      <div>
+        <input type="checkbox" name="survey" value="Friend" id="Friend">
+        <label for="Friend">Friend</label>
+      </div>
+
+      <div>
+        <input type="checkbox" name="survey" value="Newsletter" id="Newsletter">
+        <label for="Newsletter">Newsletter</label>
+      </div>
+
+      <div>
+        <input type="checkbox" name="survey" value="Advertisement" id="Advertisement">
+        <label for="Advertisement">Advertisement</label>
+      </div>
+
+    </div>
+
+    <label for="comments">Comments/Question:</label>
+    <input type="text" id="comments" name="comments" required>
+
+    <button id="saveButton">Save</button>
+  </form>
+  <button id="openLinkButton">Open Specific Link</button>
+  <script src="popup.js"></script>
+</body>
+
+</html>

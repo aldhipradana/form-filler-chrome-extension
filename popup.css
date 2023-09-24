@@ -1,0 +1,16 @@
+body{
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+form, #multiple-choice-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#multiple-choice-container > div {
+    display: flex;
+    justify-content: flex-start;
+}
