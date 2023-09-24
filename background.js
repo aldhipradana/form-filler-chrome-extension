@@ -1,22 +1,8 @@
 // background.js
-
-chrome.runtime.onInstalled.addListener(() => {
-    // Initialize storage with default values if needed
-    chrome.storage.sync.get(['savedValue'], (result) => {
-        if (!result.savedValue) {
-            chrome.storage.sync.set({
-                savedValue: ''
-            });
-        }
-    });
-});
-
 chrome.runtime.onStartup.addListener(() => {
     console.log('chrome.runtime.onStartup.');
 
 });
-
-
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     console.log('message chrome.runtime.onMessage.addListener: ' + JSON.stringify(message));
@@ -55,6 +41,9 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             }, () => {
                 console.log('formData saved: ' + JSON.stringify(formData));
             });
+            break;
+        case 'log':
+            console.log('message.value: ' + message.value);
             break;
         default:
             console.log('Unknown action: ' + message.action);

@@ -6,7 +6,7 @@ document.getElementById('saveButton').addEventListener('click', () => {
   const name = document.getElementById('name').value;
   const attendance = document.getElementById('attendance').value;
   const surveys = document.querySelectorAll('#survey input[name="survey"]:checked');
-
+  const toggle = document.querySelector('input[name="toggle"]').checked || false;
   var surveyValues = [];
 
   surveys.forEach(function(checkbox) {
@@ -15,13 +15,15 @@ document.getElementById('saveButton').addEventListener('click', () => {
 
   const comments = document.getElementById('comments').value;
 
-  saveFormData(name, attendance, surveyValues, comments);
+  saveFormData(name, attendance, surveyValues, comments, toggle);
 });
 
 // Handle opening the specific link in a new tab
 document.getElementById('openLinkButton').addEventListener('click', () => {
+  let toggle = document.querySelector('input[name="toggle"]').checked || false;
   chrome.runtime.sendMessage({
-    action: 'openLink'
+    action: 'openLink',
+    value: toggle
   });
 });
 
@@ -35,16 +37,17 @@ chrome.storage.sync.get(['formData'], (result) => {
       document.querySelector('#survey input[value="' + data + '"]').checked = true;
     });
     document.getElementById('comments').value = formData.comments;
-
+    document.querySelector('input[name="toggle"]').checked = formData.toggle;
   }
 });
 
-function saveFormData(name, attendance, surveys, comments) {
+function saveFormData(name, attendance, surveys, comments, toggle) {
   const formData = {
     name,
     attendance,
     surveys,
     comments,
+    toggle
   };
 
   chrome.runtime.sendMessage({

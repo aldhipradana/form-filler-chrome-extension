@@ -5,7 +5,11 @@
   "description": "An extension to save form values and open a specific link.",
   "permissions": [
     "activeTab",
-    "storage"
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://docs.google.com/*"
   ],
   "background": {
     "service_worker": "background.js"
@@ -22,5 +26,15 @@
     "16": "images/icon16.png",
     "48": "images/icon48.png",
     "128": "images/icon128.png"
-  }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://docs.google.com/forms/d/e/1FAIpQLSe1A52nkqnQ_0569Rgx439fTVcnFoFF6_Uw4sbAwwUZ_JAyaQ/*"
+      ],
+      "js": [
+        "autosubmit.js"
+      ]
+    }
+  ]
 }

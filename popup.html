@@ -7,7 +7,6 @@
 
 <body>
   <form id="myForm">
-    <!-- <input type="text" id="inputField" placeholder="Enter a value"> -->
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" required>
 
@@ -16,9 +15,6 @@
       <option value="Yes">Yes</option>
       <option value="No">No</option>
     </select>
-    <!-- 
-    <label for="date">Date:</label>
-    <input type="date" id="date" name="date"> -->
 
     </div>
 
@@ -50,8 +46,14 @@
     <label for="comments">Comments/Question:</label>
     <input type="text" id="comments" name="comments" required>
 
+    <div>
+      <input type="checkbox" name="toggle" value="toggleSubmit" id="toggle">
+      <label for="toggle">Toggle Submit Button</label>
+    </div>
+    
     <button id="saveButton">Save</button>
   </form>
+
   <button id="openLinkButton">Open Specific Link</button>
   <script src="popup.js"></script>
 </body>
