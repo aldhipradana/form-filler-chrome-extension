@@ -2,6 +2,7 @@ console.log('autosubmit.js loaded');
   
 chrome.storage.sync.get(['formData'], (result) => {
     const formData = result.formData;
+    console.log('formData: ' + JSON.stringify(formData));
     if (formData.toggle) {
             
         function clickNextButton() {

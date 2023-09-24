@@ -1,30 +1,36 @@
 // background.js
 chrome.runtime.onStartup.addListener(() => {
     console.log('chrome.runtime.onStartup.');
-
 });
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    console.log('message chrome.runtime.onMessage.addListener: ' + JSON.stringify(message));
-    console.log('sender chrome.runtime.onMessage.addListener: ' + JSON.stringify(sender));
-    console.log('sendResponse chrome.runtime.onMessage.addListener: ' + JSON.stringify(sendResponse));
 
     switch (message.action) {
         case 'openLink':
+            // Get the current date
+            const currentDate = new Date();
+
+            // Extract the year, month, and day components
+            const year = currentDate.getFullYear();
+            // Months are zero-indexed, so add 1 to get the correct month
+            const month = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // Zero-padding if necessary
+            const day = currentDate.getDate().toString().padStart(2, '0'); // Zero-padding if necessary
+
+            console.log("Year:", year);
+            console.log("Month:", month);
+            console.log("Day:", day);
+
+            // Create the formatted date string in YYYY-MM-DD format
+            const formattedDate = `${year}-${month}-${day}`;
+            console.log("Formatted Date:", formattedDate);
+
+            
             chrome.storage.sync.get(['formData'], (result) => {
                 const formData = result.formData;
                 if (formData) {
-                    let name = formData.name;
-                    let attendance = formData.attendance;
-                    let comments = formData.comments;
 
-                    let urls = `https://docs.google.com/forms/d/e/1FAIpQLSe1A52nkqnQ_0569Rgx439fTVcnFoFF6_Uw4sbAwwUZ_JAyaQ/viewform?usp=pp_url&entry.1498135098=${name}&entry.877086558=${attendance}&entry.2606285=${comments}`;
+                    let urls = `https://docs.google.com/forms/d/e/1FAIpQLSfYPQhxINo1zLJ9ZXoKfyvOy2rFvvtLsAZyYt25k9gP2N7DTg/viewform?usp=pp_url&entry.2116052852=Gede+Aldhi+Pradana&entry.532096719=Software+Developer&entry.1369552271=Robotmanager&entry.813213160_hour=08&entry.813213160_minute=00&entry.1923238489_hour=17&entry.1923238489_minute=00&entry.1060472253_day=${day}&entry.1060472253_month=${month}&entry.1060472253_year=${year}`
 
-                    if (formData.surveys.length > 0) {
-                        formData.surveys.forEach((data) => {
-                            urls = urls + `&entry.1424661284=${data}`;
-                        });
-                    }
                     
                     console.log('urls: ' + JSON.stringify(urls));
 

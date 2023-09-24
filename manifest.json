@@ -30,7 +30,7 @@
   "content_scripts": [
     {
       "matches": [
-        "https://docs.google.com/forms/d/e/1FAIpQLSe1A52nkqnQ_0569Rgx439fTVcnFoFF6_Uw4sbAwwUZ_JAyaQ/*"
+        "https://docs.google.com/forms/d/e/1FAIpQLSfYPQhxINo1zLJ9ZXoKfyvOy2rFvvtLsAZyYt25k9gP2N7DTg/*"
       ],
       "js": [
         "autosubmit.js"
