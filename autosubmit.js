@@ -4,6 +4,17 @@ chrome.storage.sync.get(['formData'], (result) => {
     const formData = result.formData;
     console.log('formData: ' + JSON.stringify(formData));
     if (formData.toggle) {
+        const savedEmail = document.querySelector('[name="emailAddress"]')
+        const recordToggle = document.querySelector('[jsname="MPu53c"]');
+        if (recordToggle) {
+            recordToggle.click();
+        }
+        setTimeout(function() {
+            clickNextButton();
+    
+            clickSubmitButton();
+        }, 1000);
+
             
         function clickNextButton() {
             const nextButton = document.querySelector('[jsname="OCpkoe"]');
@@ -20,8 +31,6 @@ chrome.storage.sync.get(['formData'], (result) => {
             }
         }
 
-        clickNextButton();
 
-        clickSubmitButton();
     }
 });
